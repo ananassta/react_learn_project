@@ -5,8 +5,8 @@ import "./styles/App.css"
 function App() {
   return (
     <div className="App">
-      <PostItem/>
-      <PostItem/>
+      <PostItem post={{id: 1, title: 'JavaScript', body: "JavaScript - язык программирования"}}/>
+      {/* <PostItem/> */}
     </div>
   );
 }
