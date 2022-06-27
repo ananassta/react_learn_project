@@ -11,13 +11,17 @@ function App() {
     {id: 3, title: 'JavaScript 3', body: "Язык программирования"}
   ])
   const [title, setTitle] = useState()
-  // неуправляемый инпут
-  const bodyInputRef = useRef();
-  // const [body, setBody] = useState()
+  const [body, setBody] = useState()
   const addNewPost = (e) => {
     e.preventDefault()
-    console.log(title)
-    console.log(bodyInputRef.current.value)
+    const newPost = {
+      id: Date.now(),
+      title,
+      body
+    }
+    setPosts([...posts, newPost])
+    setTitle()
+    setBody()
   }
 
   return (
@@ -30,10 +34,9 @@ function App() {
           type="text" 
           placeholder="Название поста"
         />
-        {/* Неуправляемый компонент */}
         <MyInput 
-          ref={bodyInputRef}
-          // value={body}
+          value={body}
+          onChange={e => setBody(e.target.value)} 
           type="text" 
           placeholder="Описание поста"
         />
