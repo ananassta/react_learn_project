@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PostList from "./components/PostList";
 import MyButton from "./components/UI/button/MyButton";
 import MyInput from "./components/UI/input/MyInput";
@@ -11,10 +11,13 @@ function App() {
     {id: 3, title: 'JavaScript 3', body: "Язык программирования"}
   ])
   const [title, setTitle] = useState()
+  // неуправляемый инпут
+  const bodyInputRef = useRef();
   // const [body, setBody] = useState()
   const addNewPost = (e) => {
     e.preventDefault()
     console.log(title)
+    console.log(bodyInputRef.current.value)
   }
 
   return (
@@ -27,7 +30,9 @@ function App() {
           type="text" 
           placeholder="Название поста"
         />
+        {/* Неуправляемый компонент */}
         <MyInput 
+          ref={bodyInputRef}
           // value={body}
           type="text" 
           placeholder="Описание поста"
